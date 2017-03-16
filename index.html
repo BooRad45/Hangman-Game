@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hangman Yacht Rock Style</title>
+  </head>
+  <body>
+<div id="yachtRock">
+    <h1>HANGMAN, YACHT ROCK STYLE</h1>
+    <h2>Press any key to get started!</h2>
+    <h2>Current Word</h2>
+    <!-- blank letters here -->
+    <p>Number of Guesses Remaining: </p>
+    <p>Letters Already Guessed:</p>
+</div>
+    <!-- PSEUDO-CODE: Randomly select band and list out blanks
+    Set number of guesses remaining (negative loop) to 12.
+    List number of guesses on page.
+    Alert"Letters Already Guessed"
+    create variable for letters already guessed. Alert on page. -->
+
+    <script>//creating inline js (for now) to be moved to separate file
+
+
+    	
+    	// Here we create the HTML that will be injected into our div and displayed on the page.
+          var html = "<p>Press Any Key To Get Started!</p>" +
+          "<p>wins: " + wins + "</p>" +
+          "<p>Current Word: " + curWord + "</p>" + 
+          // "<p>blank letters here - how to do this?????";
+          "<p>Number of Guesses Remaining: " +  guessesNum + "</p>" +
+          "<p>Letters Already Guessed " + guessesLet + "</p>";
+          // Injecting the HTML we just created into our div and updating the game information on our page.
+          document.querySelector("#yachtRock").innerHTML = html;
+	     }
+	  };
+
+    </script>
+
+  </body>
+</html>
