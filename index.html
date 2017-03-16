@@ -55,7 +55,7 @@
       }
 
       // Function that updates the score...
-      function updateScore() {
+      function updateWins() {
         document.querySelector("#wins").innerHTML = "Wins: " + wins;
       }
 
@@ -64,37 +64,37 @@
       // ==============================================================================
 
       // Calling functions to start the game.
-      renderQuestion();
-      updateScore();
+      renderBands();
+      updateWins();
 
       // When the user presses a key, it will run the following function...
       document.onkeyup = function(event) {
 
         // If there are no more questions, stop the function.
-        if (questionIndex === questionsArray.length) {
+        if (bandsIndex === bandsArray.length) {
           return;
         }
 
         // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
         var userInput = String.fromCharCode(event.keyCode).toLowerCase();
 
-        // Only run this code if "t" or "f" were pressed.
-        if (userInput === "t" || userInput === "f") {
+        // // Only run this code if "t" or "f" were pressed.
+        // if (userInput === "t" || userInput === "f") {
 
           // If they guess the correct answer, increase and update score, alert them they got it right.
-          if (userInput === questionsArray[questionIndex][1]) {
-            alert("Correct!");
-            score++;
-            updateScore();
+          if (userInput === bandsArray[bandsIndex][1]) {
+            
+            wins++;
+            updateWins();
           }
-          // If wrong, alert them they are wrong.
+          
           else {
-            alert("Wrong!");
+            //   need to render nothing if they guess wrong letter or retype letter
           }
 
-          // Increment the questionIndex variable and call the renderQuestion function.
-          questionIndex++;
-          renderQuestion();
+          // Increment the bandsIndex variable and call the renderBands function.
+          bandsIndex++;
+          renderBands();
 
         }
 
