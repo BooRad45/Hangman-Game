@@ -11,7 +11,7 @@
     <title>Yacht Rock Hangman Game</title>
   </head>
   <body>
-<div>
+<div id="container">
     <h1 class="yacht-rock">Yacht Rock Hangman Game!</h1>
 
     <p id="wins"></p>
@@ -45,7 +45,7 @@
       function renderBands() {
         // If there are still more bands to guess, render the next one.
         if (bandsIndex <= (bandsArray.length - 1)) {
-          document.querySelector("#bands").innerHTML = bandsArray[questionIndex][0];
+          document.querySelector("#bands").innerHTML = bandsArray[bandsIndex][0];
         }
         // If there aren't any bands left, render the end game screen.
         else {
@@ -96,9 +96,9 @@
           bandsIndex++;
           renderBands();
 
-        }
+        };
 
-      };
+     
 
     </script>
 
