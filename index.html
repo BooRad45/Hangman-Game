@@ -2,39 +2,103 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hangman Yacht Rock Style</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet">
+
+    <title>Yacht Rock Hangman Game</title>
   </head>
   <body>
-<div id="yachtRock">
-    <h1>HANGMAN, YACHT ROCK STYLE</h1>
-    <h2>Press any key to get started!</h2>
-    <h2>Current Word</h2>
-    <!-- blank letters here -->
-    <p>Number of Guesses Remaining: </p>
-    <p>Letters Already Guessed:</p>
+<div>
+    <h1 class="yacht-rock">Yacht Rock Hangman Game!</h1>
+
+    <p id="wins"></p>
+    <p id="bands"></p>
 </div>
-    <!-- PSEUDO-CODE: Randomly select band and list out blanks
-    Set number of guesses remaining (negative loop) to 12.
-    List number of guesses on page.
-    Alert"Letters Already Guessed"
-    create variable for letters already guessed. Alert on page. -->
+    <script>
 
-    <script>//creating inline js (for now) to be moved to separate file
+      // VARIABLES
+      // ==========================================================================
+
+      // The object bands and spaces for Hangman game
+      var bands = {
+        b1: ["Steely Dan", "_ _ _ _ _ _  _ _ _ _"],
+        b2: ["The Doobie Brothers", "_ _ _  _ _ _ _ _ _  _ _ _ _ _ _ _ _"],
+        b3: ["Kenny Loggins", "_ _ _ _ _  _ _ _ _ _ _ _"],
+        b4: ["Hall and Oates", "_ _ _ _   _ _ _  _ _ _ _ _"],
+        b5: ["Christopher Cross", "_ _ _ _ _ _ _ _ _ _ _  _ _ _ _ _"]
+      };
+
+      // We start the game with 0 wins.
+      var wins = 0;
+      // Variable to hold the index of current band.
+      var bandsIndex = 0;
+      // Array of bands.
+      var bandsArray = [bands.b1, bands.b2, bands.b3, bands.b4, bands.b5];
+
+      // FUNCTIONS  (still need to be called in Main Process)
+      // ==============================================================================
+
+      // Function to render bands to guess.
+      function renderBands() {
+        // If there are still more bands to guess, render the next one.
+        if (bandsIndex <= (bandsArray.length - 1)) {
+          document.querySelector("#bands").innerHTML = bandsArray[questionIndex][0];
+        }
+        // If there aren't any bands left, render the end game screen.
+        else {
+          document.querySelector("#bands").innerHTML = "Game Over!";
+          document.querySelector("#wins").innerHTML = "Final Score: " + wins + " out of " + bandsArray.length;
+        }
+      }
+
+      // Function that updates the score...
+      function updateScore() {
+        document.querySelector("#wins").innerHTML = "Wins: " + wins;
+      }
 
 
-    	
-    	// Here we create the HTML that will be injected into our div and displayed on the page.
-          var html = "<p>Press Any Key To Get Started!</p>" +
-          "<p>wins: " + wins + "</p>" +
-          "<p>Current Word: " + curWord + "</p>" + 
-          // "<p>blank letters here - how to do this?????";
-          "<p>Number of Guesses Remaining: " +  guessesNum + "</p>" +
-          "<p>Letters Already Guessed " + guessesLet + "</p>";
-          // Injecting the HTML we just created into our div and updating the game information on our page.
-          document.querySelector("#yachtRock").innerHTML = html;
-	     }
-	  };
+      // MAIN PROCESS
+      // ==============================================================================
+
+      // Calling functions to start the game.
+      renderQuestion();
+      updateScore();
+
+      // When the user presses a key, it will run the following function...
+      document.onkeyup = function(event) {
+
+        // If there are no more questions, stop the function.
+        if (questionIndex === questionsArray.length) {
+          return;
+        }
+
+        // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
+        var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+
+        // Only run this code if "t" or "f" were pressed.
+        if (userInput === "t" || userInput === "f") {
+
+          // If they guess the correct answer, increase and update score, alert them they got it right.
+          if (userInput === questionsArray[questionIndex][1]) {
+            alert("Correct!");
+            score++;
+            updateScore();
+          }
+          // If wrong, alert them they are wrong.
+          else {
+            alert("Wrong!");
+          }
+
+          // Increment the questionIndex variable and call the renderQuestion function.
+          questionIndex++;
+          renderQuestion();
+
+        }
+
+      };
 
     </script>
 
