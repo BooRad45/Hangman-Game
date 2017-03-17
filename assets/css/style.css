@@ -1,8 +1,11 @@
 @font-face {
     font-family: KR_Shroom;
-    src: url('..fonts/KR Shroom.ttf'); 
+    src: url('..fonts/KR_Shroom.ttf'); 
     }
-    .yacht-rock {
-    	font-family: KR_Shroom;
+    
+    body {
+    	text-align: center;
 
     }
+
+

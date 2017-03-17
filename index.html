@@ -9,27 +9,45 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <!-- My CSS override file -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
     <title>Yacht Rock Hangman Game</title>
   </head>
   <body>
 <div class="container">
   <div class="row"></div>
     <div row="col-sm-12">
-    <h1 class="yacht-rock">Yacht Rock Hangman Game!</h1>
+    <div class="page-header">
+      <h1>Yacht Rock <small>Hangman Game</small></h1>
+  </div>
+
 </div> <!-- close row for header -->
 <div class="container">
   <div class="row">
    <div class="col-sm-3">    
      </div> <!--empty column close -->
-    <div class="col-sm-3"></div> <!--Picture column-->
+    <div class="col-sm-3">
+      <div class="panel panel-default">
+    <div class="panel-body">
+   <img src="assets/images/yachtrock.jpg" class="img-responsive img-centered" alt="yacht rock dudes"><br><br><br><br><br><br>
+  </div>
+</div>
+    </div> <!--Picture column-->
      <div class="col-sm-3">
-       <p id>Press Any Key To Get Started!</p>
+     <div class="panel panel-default">
+        <div class="panel-body">
+            
+     
+       <p id>Press Any Key To Get Started!</p><br>
 
-          <p id="wins">Wins</p>
-          <p id="currentWord">Current Word</p>
-          <p id="bands"></p>
-          <p id="guessesLeft">Number of Guesses Remaining</p>
-          <p id="lettersGuessed">Letters Already Guessed</p>
+          <p id="wins">Wins</p><br>
+          <p id="currentWord">Current Word</p><br>
+          <p id="bands"></p><br>
+          <p id="guessesLeft">Number of Guesses Remaining</p><br>
+          <p id="lettersGuessed">Letters Already Guessed</p><br><br>
+          </div>
+      </div>
    </div><!-- close row for Hangman info column -->
           <div class="col-sm-3">   
        </div> <!--empty column close -->
