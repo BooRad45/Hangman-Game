@@ -1,11 +1,27 @@
 @font-face {
     font-family: KR_Shroom;
-    src: url('..fonts/KR_Shroom.ttf'); 
+    src: url(../fonts/KR_Shroom.ttf); 
     }
-    
+    .page-header {
+    	font-size: 35px;
+    }
     body {
+    	background: no-repeat center center fixed url(../images/70sBackDrop.jpg);
+    	background-size: cover;
     	text-align: center;
-
+    	font-family: KR_Shroom;
+    	color: seagreen;	
+    	font-size: 28px;
     }
+
+    p {
+    	color: darkslategray;
+    }
+    .panel-default {
+     height: calc(100vh - 145px);
+}
+
+
+
 
 
