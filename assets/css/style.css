@@ -2,9 +2,6 @@
     font-family: KR_Shroom;
     src: url(../fonts/KR_Shroom.ttf); 
     }
-    .page-header {
-    	font-size: 35px;
-    }
     body {
     	background: no-repeat center center fixed url(../images/70sBackDrop.jpg);
     	background-size: cover;
