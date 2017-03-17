@@ -25,16 +25,16 @@
 </div> <!-- close row for header -->
 <div class="container">
   <div class="row">
-   <div class="col-sm-2">    
+   <div class="col-sm-1">    
      </div> <!--empty column close -->
-    <div style="padding-right: 0px;" class="col-sm-4">
+    <div style="padding-right: 0px;" class="col-sm-5">
       <div class="panel panel-default">
     <div class="panel-body">
    <img src="assets/images/yachtrock.jpg" class="img-responsive img-centered" alt="yacht rock dudes"><br><br><br><br><br><br>
   </div>
 </div>
     </div> <!--Picture column-->
-     <div style="padding-left: 0px;" class="col-sm-4">
+     <div style="padding-left: 0px;" class="col-sm-5">
      <div class="panel panel-default">
         <div class="panel-body">
             
@@ -49,7 +49,7 @@
           </div>
       </div>
    </div><!-- close row for Hangman info column -->
-          <div class="col-sm-4">   
+          <div class="col-sm-1">   
        </div> <!--empty column close -->
     </div> <!-- close row for Hangman game info and pic -->
   </div><!-- close row for container --> 
@@ -78,7 +78,7 @@
 
       var guessesLeft = 12;
 
-      var lettersGuessed = 
+      var lettersGuessed = 0;
 
       // FUNCTIONS  (still need to be called in Main Process)
       // ==============================================================================
@@ -87,7 +87,7 @@
       function renderBands() {
         // If there are still more bands to guess, render the next one.
         if (bandsIndex <= (bandsArray.length - 1)) {
-          document.querySelector("#bands").innerHTML = bandsArray[bandsIndex][0];
+          document.querySelector("#bands").innerHTML = bandsArray[bandsIndex][1];
         }
         // If there aren't any bands left, render the end game screen.
         else {
@@ -96,60 +96,63 @@
         }
       }
 
-      // Function that updates wins...
-      function updateWins() {
-        document.querySelector("#wins").innerHTML = "Wins: " + wins;
-      }
+      renderBands();
 
-      // Function to update remaining guesses ...
+    //   //Function to grab letters from current band and store them in variable
+    //    function currentBand () {
+    //         var curBand = bandsArray[bandsIndex][0];
+    //         var curBandVar = curBand.charAt(0);
+    //         document.getElementById("demo").innerHTML = res;
 
-      function updateguessesLeft() {
-        // if there are still guesses left then render number for user reference
-        for(var i = 12; i > 0; i--){
-        document.write(guessesLeft);
-}
-      }
+    //     // }str.charAt(0)bandsArray[bandsIndex][0] {
+
+    //   // Function that updates wins...
+    //   function updateWins() {
+    //     document.querySelector("#wins").innerHTML = "Wins: " + wins;
+    //   }
+
+    //   // Function to update remaining guesses ...
+
+    //   function updateguessesLeft() {
+    //     // if there are still guesses left then render number for user reference
+    //     for(var i = 12; i > 0; i--){
+    //     document.write(guessesLeft);
+    //    }
+    // }
 
 
-      // MAIN PROCESS
-      // ==============================================================================
+    //   // MAIN PROCESS
+    //   // ==============================================================================
 
-      // Calling functions to start the game.
+    //   // Calling functions to start the game.
      
 
-      // When the user presses a key, it will run the following function...
-      document.onkeyup = function(event) {
+    //   // When the user presses a key, it will run the following function...
+    //   document.onkeyup = function(event) {
 
-        // If there are no more questions, stop the function.
-        if (bandsIndex === bandsArray.length) {
-          return;
-        }
-      renderBands();
-      updateWins();
-      updateguessesLeft();
+    //     // If there are no more questions, stop the function.
+    //     if (bandsIndex === bandsArray.length) {
+    //       return;
+    //     }
+    //   renderBands();
+    //   updateWins();
+    //   updateguessesLeft();
 
-        // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
-        var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+    //     // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
+    //     var userInput = String.fromCharCode(event.keyCode).toLowerCase();
 
-        // // Only run this code if "t" or "f" were pressed.
-        // if (userInput === "t" || userInput === "f") {
-
-          // If they guess the correct answer, increase and update score, alert them they got it right.
-          if (userInput === bandsArray[bandsIndex][1]) {
-            
-            wins++;
-            updateWins();
-          }
+    //       if (userInput === str.charAt(0)bandsArray[bandsIndex][0]; {
+    //             //re-render html at bandsArray[bandsIndex[1]]     
+    //       }
           
-          else {
-            //   need to render nothing if they guess wrong letter or retype letter
-          }
+    //       else {
+    //         console.log("Made it");
+    //       }
 
-          // Increment the bandsIndex variable and call the renderBands function.
-          bandsIndex++;
-          renderBands();
+    //       // Increment the bandsIndex variable and call the renderBands function.
+    //       bandsIndex++;
 
-        };
+    //     };
 
      
 </script>
