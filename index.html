@@ -42,10 +42,11 @@
        <p id>Press Any Key To Get Started!</p><br>
 
           <p id="wins">Wins</p><br>
-          <p id="currentWord">Current Word</p><br>
+          <p id="currentBand">Current Band</p><br>
+          <p id="guess"></p><br>
           <p id="bands"></p><br>
           <p id="guessesLeft">Number of Guesses Remaining</p><br>
-          <p id="lettersGuessed">Letters Already Guessed</p><br><br>
+          <p id="lettersGuessed"></p><br><br>
           </div>
       </div>
    </div><!-- close row for Hangman info column -->
@@ -61,7 +62,7 @@
       // ==========================================================================
 ///////////////////////////////
       // Band bank
-      var bands = [Steely Dan, The Doobie Brothers, Hall and Oates, Christopher Cross, Toto, Kenny Loggins];
+      var bands = ["Steely Dan", "The Doobie Brothers", "Hall and Oates", "Christopher Cross", "Toto", "Kenny Loggins"];
 
 ///////////////////////////////
       //section for user guesses
@@ -69,11 +70,15 @@
 
       var indexer;
 
+ 
+
  ////////////////////////////////////////////////////////
 
  //Random formula to choose band from band bank
       var currentBand = bands[Math.floor(Math.random() * bands.length)];
      console.log(currentBand);
+
+
 
 ////////////////////////////////////////////////////////////////
 // stores user's selected letters in answerArray
@@ -93,63 +98,75 @@ document.querySelector("#currentBand").innerHTML = "The band you're trying to gu
 ///////////////////////////////////////////////////////////////////////
 //Shows user the total number of words they have guessed correctly, starting at 0.
     var bandsGuessedRight = 0;
-    document.querySelector("#correctBands").innerHTML = "Total bands guessed: " + bandsGuessedRight;
+    document.querySelector("#wins").innerHTML = "Total bands guessed: " + bandsGuessedRight;
 
-/////////Sets number of available guesses to user and displays it on page.
-var remainingGuesses = 10;
-document.querySelector("#guessesleft").innerHTML = "Total guesses remaining: " + remainingGuesses;
+/////////Sets number of available guesses to user and displays it on page. 
+ 
 
-//////////////////////////////////////////////////////////////////////////
-//Capture user input and store it to userGuess
-document.onkeyup = function(event) {
+
+    //Capture character input and store it to userGuess
+    document.onkeyup = function(event) {
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     // console.log(userGuess);
-    bandssGuessedArray.push(userGuess);
-    document.querySelector('#guess').innerHTML = "Your guesses: " + lettersGuessedArray;
+    lettersGuessed.push(userGuess);
+    document.querySelector('#guess').innerHTML = "Your guesses: " + lettersGuessed;
 
 
-    if (currentWord.indexOf(userGuess) !== -1) {
-        theIndex = currentWord.indexOf(userGuess);
+ 
+    //Sets number of available guesses to user and displays it on page.
+//Sets number of available guesses to user and displays it on page.
+    var remainingGuesses = 12;
+    document.querySelector("#guessesLeft").innerHTML = "Total guesses remaining: " + remainingGuesses;
+
+
+    if (currentBand.indexOf(userGuess) !== -1) {
+        indexer = currentBand.indexOf(userGuess);
         console.log(userGuess);
-        answerArray[theIndex] = userGuess;
-        document.querySelector("#demo").innerHTML = answerArray.join(" ");
+        answerArray[indexer] = userGuess;
+        document.querySelector("#currentBand").innerHTML = answerArray.join(" ");
 
-    };
-      // We start the game with 0 wins.
-      var wins = 0;
-      // Variable to hold the index of current band.
-      var bandsIndex = 0;
-      // Array of bands.
-      var bandsArray = [bands.b1, bands.b2, bands.b3, bands.b4, bands.b5];
 
-      var guessesLeft = 12;
 
-      var lettersGuessed = 0;
+    }
+  };
 
-      // FUNCTIONS  (still need to be called in Main Process)
-      // ==============================================================================
 
-      // Function to render bands to guess.
-      function renderBands() {
-        // If there are still more bands to guess, render the next one.
-        if (bandsIndex <= (bandsArray.length - 1)) {
-          document.querySelector("#bands").innerHTML = bandsArray[bandsIndex][1];
-        }
-        // If there aren't any bands left, render the end game screen.
-        else {
-          document.querySelector("#bands").innerHTML = "Game Over!";
-          document.querySelector("#wins").innerHTML = "Final Score: " + wins + " out of " + bandsArray.length;
-        }
-       }
+
+      // // We start the game with 0 wins.
+      // var wins = 0;
+      // // Variable to hold the index of current band.
+      // var bandsIndex = 0;
+      // // Array of bands.
+      // var bandsArray = [bands.b1, bands.b2, bands.b3, bands.b4, bands.b5];
+
+      // var guessesLeft = 12;
+
+      // var lettersGuessed = 0;
+
+      // // FUNCTIONS  (still need to be called in Main Process)
+      // // ==============================================================================
+
+      // // Function to render bands to guess.
+      // function renderBands() {
+      //   // If there are still more bands to guess, render the next one.
+      //   if (bandsIndex <= (bandsArray.length - 1)) {
+      //     document.querySelector("#bands").innerHTML = bandsArray[bandsIndex][1];
+      //   }
+      //   // If there aren't any bands left, render the end game screen.
+      //   else {
+      //     document.querySelector("#bands").innerHTML = "Game Over!";
+      //     document.querySelector("#wins").innerHTML = "Final Score: " + wins + " out of " + bandsArray.length;
+      //   }
+      //  }
      
-      }
+      // }
 
 
-      //Function to grab letters from current band name letters and store letters in variable
-       function currentBand () {
-            var curBand = bandsArray[bandsIndex][0];
-            var curBandVar = curBand.charAt(0);
-            document.getElementById(curBandVar).innerHTML = 
+      // //Function to grab letters from current band name letters and store letters in variable
+      //  function currentBand () {
+      //       var curBand = bandsArray[bandsIndex][0];
+      //       var curBandVar = curBand.charAt(0);
+      //       document.getElementById(curBandVar).innerHTML = 
 
     //     // }str.charAt(0)bandsArray[bandsIndex][0] {
 
