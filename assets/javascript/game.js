@@ -10,12 +10,21 @@
 
       var indexer;
 
+      var userGuess;
+
+      var counter = 12;
+
+
+
+      
+
+
  
 
  ////////////////////////////////////////////////////////
 
  //Random formula to choose band from band bank
-      var currentBand = bands[Math.floor(Math.random() * bands.length)];
+    var currentBand = bands[Math.floor(Math.random() * bands.length)];
      console.log(currentBand);
 
 
@@ -35,6 +44,11 @@ document.querySelector("#currentBand").innerHTML = answerArray.join(" ");
 var remainingLetters = currentBand.length;
 document.querySelector("#currentBand").innerHTML = "The band you're trying to guess is " + remainingLetters + " characters long.";
 
+
+ 
+
+
+
 ///////////////////////////////////////////////////////////////////////
 //Shows user the total number of words they have guessed correctly, starting at 0.
     var bandsGuessedRight = 0;
@@ -46,17 +60,18 @@ document.querySelector("#currentBand").innerHTML = "The band you're trying to gu
 
     //Capture character input and store it to userGuess
     document.onkeyup = function(event) {
-    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    userGuess = String.fromCharCode(event.keyCode).toLowerCase();
     // console.log(userGuess);
     lettersGuessed.push(userGuess);
     document.querySelector('#guess').innerHTML = "Your guesses: " + lettersGuessed;
+    document.querySelector("#guessesLeft").innerHTML = "Number of Guesses Left: " + counter;
+    counter--;
+
 
 
  
     //Sets number of available guesses to user and displays it on page.
 //Sets number of available guesses to user and displays it on page.
-    var remainingGuesses = 12;
-    document.querySelector("#guessesLeft").innerHTML = "Total guesses remaining: " + remainingGuesses;
 
 
     if (currentBand.indexOf(userGuess) !== -1) {
@@ -68,9 +83,12 @@ document.querySelector("#currentBand").innerHTML = "The band you're trying to gu
 
 
     }
+
   };
 
+ 
 
+ 
 
       // // We start the game with 0 wins.
       // var wins = 0;
