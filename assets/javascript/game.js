@@ -56,7 +56,16 @@ document.querySelector("#currentBand").innerHTML = "The band you're trying to gu
 
 /////////Sets number of available guesses to user and displays it on page. 
  
+function endGame () {
+  if (counter === -1) {
+    document.querySelector("#guessesLeft").innerHTML = "You lose! Try again with a new band!";
+    counter = 12;
 
+
+
+
+  }
+}
 
     //Capture character input and store it to userGuess
     document.onkeyup = function(event) {
@@ -66,6 +75,7 @@ document.querySelector("#currentBand").innerHTML = "The band you're trying to gu
     document.querySelector('#guess').innerHTML = "Your guesses: " + lettersGuessed;
     document.querySelector("#guessesLeft").innerHTML = "Number of Guesses Left: " + counter;
     counter--;
+    endGame();
 
 
 
